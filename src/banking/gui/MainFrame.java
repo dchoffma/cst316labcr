@@ -173,6 +173,7 @@ class MainFrame extends JFrame {
 			String balance = balanceField.getText();
 			Account acc = myServer.getAccount(name);
 			if (acc != null && acc.withdraw(Float.parseFloat(balance))) {
+				System.out.println(balance);
 				JOptionPane.showMessageDialog(null, "Withdrawal successful");
 			} else {
 				JOptionPane.showMessageDialog(null, "Withdrawal unsuccessful");

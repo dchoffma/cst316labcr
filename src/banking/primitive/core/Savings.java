@@ -31,13 +31,19 @@ public class Savings extends Account {
 	 */
 	public boolean withdraw(float amount) {
 		if (getState() == State.OPEN && amount > 0.0f) {
-			balance = balance - amount;
+			if(balance >= amount )
+			{
+				balance = balance - amount;
+			}
+			else{
+				return false;
+			}
 			numWithdraws++;
 			if (numWithdraws > 3)
 				balance = balance - 1.0f;
 			// KG BVA: should be < 0
 			if (balance <= 0.0f) {
-				setState(State.OVERDRAWN);
+				setState(State.CLOSED);
 			}
 			return true;
 		}
